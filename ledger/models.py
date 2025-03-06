@@ -13,3 +13,8 @@ class Recipe(models.Model):
     
     def __str__(self):
         return self.name
+    
+class RecipeIngredient(models.Model):
+    quantity = models.CharField(max_length=10)
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE, related_name="ingredients")
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="recipe")
