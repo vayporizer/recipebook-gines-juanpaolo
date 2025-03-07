@@ -19,8 +19,8 @@ class Recipe(models.Model):
     
 class RecipeIngredient(models.Model):
     quantity = models.CharField(max_length=10)
-    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE, related_name="ingredients")
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="recipe")
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE, related_name='recipe')
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='ingredients')
     
     def __str__(self):
         return '{} of {} in {}'.format(self.quantity, self.ingredient.name, self.recipe.name)
