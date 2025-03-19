@@ -15,13 +15,10 @@ class IngredientAdmin(admin.ModelAdmin):
 class RecipeAdmin(admin.ModelAdmin):
     model = Recipe
     inlines = [RecipeIngredientInline]
-    ('Details', {
-        'ingredients':
-        ('name', 'quantity')
-    })
-    list_display = ('name',)
+    ('Details', {'ingredients':('name', 'quantity')})
+    list_display = ('name', 'author', 'created_on', 'updated_on')
     search_fields = ('name',)
-    list_filter = ('name',)
+    list_filter = ('name', 'author', 'created_on', 'updated_on')
 
 class RecipeIngredientAdmin(admin.ModelAdmin):
     model = RecipeIngredient
