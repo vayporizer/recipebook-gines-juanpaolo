@@ -4,10 +4,15 @@
     <link rel="stylesheet" href="style.css">
     <title>{% block title %}My amazing site{% endblock %}</title>
     {% block styles %}{% endblock %}
+    <h1> Recipe Book </h1>
+    <form method="POST" action="{% url 'logout' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit"> Logout </button>
+    </form>
 </head>
 <body>
     <div id="content">
-        <h1> Recipe Book </h1>
         {% block content %}{% endblock %}
     </div>
     {% block scripts %}{% endblock %}
