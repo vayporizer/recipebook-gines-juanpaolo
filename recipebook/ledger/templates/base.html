@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="style.css">
-    <title>{% block title %}My amazing site{% endblock %}</title>
+    <title>{% block title %} My amazing site {% endblock %}</title>
     {% block styles %}{% endblock %}
     <h1> Recipe Book </h1>
     <form method="POST" action="{% url 'logout' %}">
