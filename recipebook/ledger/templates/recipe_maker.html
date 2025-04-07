@@ -7,6 +7,13 @@
     <form method="post">
         {% csrf_token %}
         {{ recipe_form.as_p }}
-        <button type="submit"> Submit </button>
+        <button type="submit" name="recipe"> Submit </button>
+    </form>
+
+    <h2> Add an Ingredient </h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ ingredient_form.as_p }}
+        <button type="submit" name="ingredient"> Submit </button>
     </form>
 {% endblock %}
