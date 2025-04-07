@@ -13,5 +13,10 @@
         <li> {{ ingredient.quantity}} {{ ingredient.ingredient.name }} </li>
         {% endfor %}
     </ul>
+    {% if recipe.images.all %}
+        {% for image in recipe.images.all %}
+            <img src="{{ image.image.url }}" alt="{{ image.description }}">
+        {% endfor %}
+    {% endif %}
     <a href="{% url 'ledger:recipe_list' %}"> <button type="button"> Back to Recipes List </button> </a>
 {% endblock %}
