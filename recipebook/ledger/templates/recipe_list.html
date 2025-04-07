@@ -7,7 +7,7 @@
     <a href="{% url 'ledger:recipe_maker' %}"> <button type="button"> Add a Recipe </button> </a>
     <ul>
         {% for recipe in recipes %}
-        <li><a href="{% url 'ledger:recipe' recipe.pk %}"> {{ recipe.name }} </a></li>
+            <li><a href="{% url 'ledger:recipe' recipe.pk %}"> {{ recipe.name }} </a></li>
         {% endfor %}
     </ul>
 {% endblock %}

@@ -9,6 +9,7 @@
         Last updated: {{ recipe.updated_on }}
     </h4>
 
+    <h3> Ingredients </h3>
     <ul>
         {% for ingredient in recipe.ingredients.all %}
         <li> {{ ingredient.quantity}} {{ ingredient.ingredient.name }} </li>

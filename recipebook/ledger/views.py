@@ -25,10 +25,12 @@ def recipe_maker(request):
                 recipe_form.instance.author = request.user.profile
                 recipe_form.save()
                 return redirect('ledger:recipe_list')
+            
         if 'ingredient' in request.POST:
             ingredient_form = IngredientForm(request.POST)
             if ingredient_form.is_valid():
                 ingredient_form.save()
+                
         if 'recipe_ingredient' in request.POST:
             recipe_ingredient_form = RecipeIngredientForm(request.POST)
             if recipe_ingredient_form.is_valid():
