@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Recipe
-from .forms import RecipeForm
+from .forms import RecipeForm, IngredientForm
 
 @login_required
 def recipe_list(request):
@@ -16,10 +16,18 @@ def recipe(request, key):
 @login_required
 def recipe_maker(request):
     recipe_form = RecipeForm()
+    ingredient_form = IngredientForm()
     if request.method == 'POST':
-        recipe_form = RecipeForm(request.POST)
-        if recipe_form.is_valid():
-            recipe_form.instance.author = request.user.profile
-            recipe_form.save()
-            return redirect('ledger:recipe_list')
-    return render(request, 'recipe_maker.html', {'recipe_form':recipe_form})
+        if 'recipe' in request.POST:
+            recipe_form = RecipeForm(request.POST)
+            if recipe_form.is_valid():
+                recipe_form.instance.author = request.user.profile
+                recipe_form.save()
+                return redirect('ledger:recipe_list')
+        elif 'ingredient' in request.POST:
+            ingredient_form = IngredientForm(request.POST)
+            if ingredient_form.is_valid():
+                ingredient_form.save()
+    
+    ctx = {'recipe_form':recipe_form, 'ingredient_form':ingredient_form}
+    return render(request, 'recipe_maker.html', ctx)
