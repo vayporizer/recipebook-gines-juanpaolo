@@ -23,4 +23,6 @@
         {{ recipe_ingredient_form.as_p }}
         <button type="submit" name="recipe_ingredient"> Submit </button>
     </form>
+
+    <a href="{% url 'ledger:recipe_list' %}"> <button type="button"> Back to Recipes List </button> </a>
 {% endblock %}
