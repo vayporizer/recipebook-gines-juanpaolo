@@ -4,11 +4,25 @@
 {% block title %} {{ recipe.name }} {% endblock %}
 {% block content %}
     <h2> {{ recipe.name }} </h2>
-    <h4> Author: {{ recipe.author }} </h4>
+    <h4> Author: {{ recipe.author }} <br>
+        Created on: {{ recipe.created_on }} <br>
+        Last updated: {{ recipe.updated_on }}
+    </h4>
+
+    <h3> Ingredients </h3>
     <ul>
         {% for ingredient in recipe.ingredients.all %}
         <li> {{ ingredient.quantity}} {{ ingredient.ingredient.name }} </li>
         {% endfor %}
     </ul>
-    <p><a href="{% url 'ledger:recipe_list' %}"> Back to Recipes List </a></p>
+
+    <a href="{% url 'ledger:image_uploader' key=recipe.pk %}"> <button type="button"> Upload an image </button> </a> <br>
+
+    {% if recipe.images.all %}
+        {% for image in recipe.images.all %}
+            <img src="{{ image.image.url }}" alt="{{ image.description }}">
+        {% endfor %}
+    {% endif %}
+
+    <br> <a href="{% url 'ledger:recipe_list' %}"> <button type="button"> Back to Recipes List </button> </a>
 {% endblock %}
